@@ -8,5 +8,10 @@
     "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mongodb": "^5.7.0",
+    "mongoose": "^7.4.0",
+    "mongoose-global": "^1.0.1"
+  }
 }
