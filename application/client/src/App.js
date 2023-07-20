@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 function App() {
-  return <div></div>;
+  return <div>Welcome to our tours</div>;
 }
 
 export default App;
