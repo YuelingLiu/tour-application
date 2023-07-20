@@ -51,69 +51,69 @@ const tourSchema = new mongoose.Schema(
 
     price: { type: Number, required: [true, 'A tour must have a price'] },
 
-    priceDiscount: {
-      type: Number,
-      validate: {
-        validator: function(val) {
-          // this onply points to current doc on new document creation
-          return val < this.price; //100< 200 true ,if 250< 200 false
-        },
-      },
-      message: 'Discount price ({VALUE}) should be below regular price',
-    },
+    // priceDiscount: {
+    //   type: Number,
+    //   validate: {
+    //     validator: function(val) {
+    //       // this onply points to current doc on new document creation
+    //       return val < this.price; //100< 200 true ,if 250< 200 false
+    //     },
+    //   },
+    //   message: 'Discount price ({VALUE}) should be below regular price',
+    // },
 
-    summary: {
-      type: String,
-      trim: true,
-      required: [true, 'A tour must have a  summary'],
-    },
-    description: {
-      type: String,
-      trim: true,
-    },
-    imageCover: {
-      type: String,
-      required: [true, 'A tour must have a  cover image'],
-    },
-    images: [String],
-    createdAt: {
-      type: Date,
-      default: Date.now(),
-    },
+    //   summary: {
+    //     type: String,
+    //     trim: true,
+    //     required: [true, 'A tour must have a  summary'],
+    //   },
+    //   description: {
+    //     type: String,
+    //     trim: true,
+    //   },
+    //   imageCover: {
+    //     type: String,
+    //     required: [true, 'A tour must have a  cover image'],
+    //   },
+    //   images: [String],
+    //   createdAt: {
+    //     type: Date,
+    //     default: Date.now(),
+    //   },
 
-    startDates: [Date],
-    secretTour: {
-      type: Boolean,
-      default: false,
-    },
+    //   startDates: [Date],
+    //   secretTour: {
+    //     type: Boolean,
+    //     default: false,
+    //   },
 
-    startLocation: {
-      // GeoJSON
-      type: {
-        type: String,
-        default: 'Point',
-        enum: ['Point'],
-      },
-      coordinates: [Number],
-      address: String,
-      description: String,
-    },
+    //   startLocation: {
+    //     // GeoJSON
+    //     type: {
+    //       type: String,
+    //       default: 'Point',
+    //       enum: ['Point'],
+    //     },
+    //     coordinates: [Number],
+    //     address: String,
+    //     description: String,
+    //   },
 
-    locations: [
-      {
-        type: {
-          type: String,
-          default: 'Point',
-          enum: ['Point'],
-        },
-        coordinates: [Number],
-        address: String,
-        description: String,
-        day: Number,
-      },
-    ],
+    //   locations: [
+    //     {
+    //       type: {
+    //         type: String,
+    //         default: 'Point',
+    //         enum: ['Point'],
+    //       },
+    //       coordinates: [Number],
+    //       address: String,
+    //       description: String,
+    //       day: Number,
+    //     },
+    //   ],
 
-    guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+    //   guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
   },
 
   {

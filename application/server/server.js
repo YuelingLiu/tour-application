@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const tourRoute = require('./routes/tourRoute');
-
+const userRoute = require('./routes/userRoute');
 dotenv.config({ path: '.env' });
 
 const app = express();
@@ -35,3 +35,4 @@ app.get('/', (req, res) => res.send('Hello World from overview /'));
 
 // Mount the tourRoute as a middleware under the '/api/v2/tours' path
 app.use('/api/v1/tours', tourRoute);
+app.use('/api/va/users', userRoute);
