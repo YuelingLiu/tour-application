@@ -81,3 +81,15 @@ exports.updateTour = async (req, res) => {
     });
   }
 };
+
+exports.deleteTour = async (req, res) => {
+  const tour = await Tour.findOneAndDelete(req.body.id, () => {
+    return next();
+  });
+  res.status(200).json({
+    status: 'success',
+    data: {
+      tour,
+    },
+  });
+};
