@@ -62,64 +62,64 @@ const tourSchema = new mongoose.Schema(
     //   message: 'Discount price ({VALUE}) should be below regular price',
     // },
 
-    //   summary: {
-    //     type: String,
-    //     trim: true,
-    //     required: [true, 'A tour must have a  summary'],
-    //   },
-    //   description: {
-    //     type: String,
-    //     trim: true,
-    //   },
+    summary: {
+      type: String,
+      trim: true,
+      required: [true, 'A tour must have a  summary'],
+    },
+    description: {
+      type: String,
+      trim: true,
+    },
     //   imageCover: {
     //     type: String,
     //     required: [true, 'A tour must have a  cover image'],
     //   },
     //   images: [String],
-    //   createdAt: {
-    //     type: Date,
-    //     default: Date.now(),
-    //   },
+    createdAt: {
+      type: Date,
+      default: Date.now(),
+    },
 
-    //   startDates: [Date],
-    //   secretTour: {
-    //     type: Boolean,
-    //     default: false,
-    //   },
+    startDates: [Date],
+    secretTour: {
+      type: Boolean,
+      default: false,
+    },
 
-    //   startLocation: {
-    //     // GeoJSON
-    //     type: {
-    //       type: String,
-    //       default: 'Point',
-    //       enum: ['Point'],
-    //     },
-    //     coordinates: [Number],
-    //     address: String,
-    //     description: String,
-    //   },
+    startLocation: {
+      // GeoJSON
+      type: {
+        type: String,
+        default: 'Point',
+        enum: ['Point'],
+      },
+      coordinates: [Number],
+      address: String,
+      description: String,
+    },
 
-    //   locations: [
-    //     {
-    //       type: {
-    //         type: String,
-    //         default: 'Point',
-    //         enum: ['Point'],
-    //       },
-    //       coordinates: [Number],
-    //       address: String,
-    //       description: String,
-    //       day: Number,
-    //     },
-    //   ],
+    locations: [
+      {
+        type: {
+          type: String,
+          default: 'Point',
+          enum: ['Point'],
+        },
+        coordinates: [Number],
+        address: String,
+        description: String,
+        day: Number,
+      },
+    ],
 
-    //   guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
-  },
+    guides: [{ type: mongoose.Schema.ObjectId, ref: 'User' }],
+  } //
 
-  {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
-  }
+  // {
+  //   toJSON: { virtuals: true },
+  //   toObject: { virtuals: true },
+  // }
 );
 
 // now create a model out of schema

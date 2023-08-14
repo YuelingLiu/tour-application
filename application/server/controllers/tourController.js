@@ -54,11 +54,48 @@ exports.createTour = async (req, res) => {
 
 // update tour
 exports.updateTour = async (req, res) => {
+  console.log('In updateTour');
+  console.log('Request Body:', req.body);
+
   try {
+    console.log('Request Body:', req.body);
+    console.log('Tour ID:', req.params.id);
+
     const tour = await Tour.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
+
+    //console.log('Updated Tour:', tour);
+
+    if (!tour) {
+      return res.status(404).json({
+        status: 'error',
+        message: 'Tour not found',
+      });
+    }
+
+    res.status(200).json({
+      status: 'success',
+      data: {
+        tour,
+      },
+    });
+  } catch (err) {
+    console.error('Error:', err);
+
+    return res.status(400).json({
+      status: 'error',
+      message: 'Failed to update tour',
+      error: err.message,
+    });
+  }
+};
+
+exports.deleteTour = async (req, res) => {
+  console.log('Tour Id', req.params.id);
+  try {
+    const tour = await Tour.findOneAndDelete(req.params.id);
 
     if (!tour) {
       return res.status(404).json({
@@ -76,20 +113,8 @@ exports.updateTour = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       status: 'error',
-      message: 'Failed to update tour',
+      message: 'Failed to delete tour',
       error: err.message,
     });
   }
-};
-
-exports.deleteTour = async (req, res) => {
-  const tour = await Tour.findOneAndDelete(req.body.id, () => {
-    return next();
-  });
-  res.status(200).json({
-    status: 'success',
-    data: {
-      tour,
-    },
-  });
 };
