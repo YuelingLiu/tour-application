@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const tourController = require('../controllers/tourController');
+const authController = require('./../controllers/authController');
 
-// Define your route handlers here
-router.get('/', tourController.getAllTours);
+router.post('/signup', authController.signup);
+router.post('/login', authController.login);
+
+// // Define your route handlers here
+// router.get('/', authController.getAllUsers);
 
 module.exports = router;

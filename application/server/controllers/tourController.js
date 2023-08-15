@@ -1,6 +1,17 @@
 const Tour = require('../models/tourModel');
+const catchAsync = require('./../utils/catchAsync');
 
-exports.getAllTours = async (req, res) => {
+// a top tours middleware
+
+exports.aliasTopTours = (req, res, next) => {
+  req.query.limit = '5';
+  req.query.sort = '-ratingsAverage,price';
+  req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
+  //alwasy need next for middleware\
+  next();
+};
+
+exports.getAllTours = catchAsync(async (req, res, next) => {
   try {
     const tours = await Tour.find(); // Fetch tours from the database
 
@@ -32,9 +43,9 @@ exports.getAllTours = async (req, res) => {
       error: err.message,
     });
   }
-};
+});
 
-exports.createTour = async (req, res) => {
+exports.createTour = catchAsync(async (req, res, next) => {
   try {
     const tour = await Tour.create(req.body);
     return res.status(201).json({
@@ -50,10 +61,10 @@ exports.createTour = async (req, res) => {
       error: err.message,
     });
   }
-};
+});
 
 // update tour
-exports.updateTour = async (req, res) => {
+exports.updateTour = catchAsync(async (req, res, next) => {
   console.log('In updateTour');
   console.log('Request Body:', req.body);
 
@@ -90,9 +101,11 @@ exports.updateTour = async (req, res) => {
       error: err.message,
     });
   }
-};
+});
 
-exports.deleteTour = async (req, res) => {
+// get one tour
+
+exports.deleteTour = catchAsync(async (req, res, next) => {
   console.log('Tour Id', req.params.id);
   try {
     const tour = await Tour.findOneAndDelete(req.params.id);
@@ -117,4 +130,4 @@ exports.deleteTour = async (req, res) => {
       error: err.message,
     });
   }
-};
+});

@@ -35,4 +35,4 @@ app.get('/', (req, res) => res.send('Hello World from overview /'));
 
 // Mount the tourRoute as a middleware under the '/api/v2/tours' path
 app.use('/api/v1/tours', tourRoute);
-app.use('/api/va/users', userRoute);
+app.use('/api/v1/users', userRoute);
