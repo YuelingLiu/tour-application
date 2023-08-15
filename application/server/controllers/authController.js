@@ -1,7 +1,10 @@
 const crypto = require('crypto');
 const jwt = require('jsonwebtoken');
 const catchAsync = require('./../utils/catchAsync');
+const AppError = require('./../utils/appError');
+
 const User = require('./../models/userModel');
+const { promisify } = require('util');
 
 // this function takes a user's id and generates a JWT using the jwt.sign function
 const signToken = (id) => {
@@ -182,5 +185,6 @@ exports.protect = catchAsync(async (req, res, next) => {
 
   // GRANT ACCESS TO PROTECTED ROUTE
   req.user = currentUser;
+  res.locals.user = currentUser;
   next();
 });

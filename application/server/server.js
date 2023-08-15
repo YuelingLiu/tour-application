@@ -6,6 +6,13 @@ const userRoute = require('./routes/userRoute');
 dotenv.config({ path: '.env' });
 
 const app = express();
+app.use((req, res, next) => {
+  req.requestTime = new Date().toISOString();
+  // console.log('req header', req.headers);
+  console.log(req.cookies);
+  next();
+});
+
 const PORT = process.env.PORT || 8080;
 
 // Middleware to parse JSON request bodies
