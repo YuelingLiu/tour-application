@@ -12,7 +12,7 @@ function MyNavbar() {
           fontSize: '24px',
           fontWeight: 'bold',
           marginLeft: '50px',
-          color: '#672F2F',
+          color: '#89CFF0',
           textTransform: 'capitalize',
         }}
       >
