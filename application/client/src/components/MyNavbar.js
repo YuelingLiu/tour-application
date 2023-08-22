@@ -1,24 +1,22 @@
 import React from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import '../styling/nav.css'; // Importing the CSS file
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function MyNavbar() {
   return (
-    <Navbar
-      className="custom-navbar"
-      variant="dark"
-      expand="lg"
-      style={{ padding: '20px' }}
-    >
+    <Navbar expand="lg" style={{ padding: '20px' }}>
       <Navbar.Brand
         href="/"
         style={{
           fontSize: '24px',
           fontWeight: 'bold',
-          marginLeft: '10px',
-          color: '#333333',
+          marginLeft: '50px',
+          color: '#672F2F',
+          textTransform: 'capitalize',
         }}
       >
-        TOUR-VISTA
+        Natours
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -29,16 +27,21 @@ function MyNavbar() {
               fontSize: '20px',
               marginRight: '10px',
               fontWeight: 'bold',
-              color: '#333333',
+              textTransform: 'capitalize',
             }}
           >
             Login
           </Nav.Link>
           <Nav.Link
             href="/register"
-            style={{ fontSize: '20px', fontWeight: 'bold', color: '#333333' }}
+            style={{
+              fontSize: '20px',
+              fontWeight: 'bold',
+              textTransform: 'capitalize',
+              marginRight: '100px',
+            }}
           >
-            Register
+            Sign up
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
