@@ -18,6 +18,7 @@
     "mongodb": "^5.7.0",
     "mongoose": "^7.4.0",
     "mongoose-global": "^1.0.1",
+    "nodemailer": "^6.9.4",
     "validator": "^13.9.0"
   },
   "devDependencies": {

@@ -23,10 +23,10 @@ exports.deleteMe = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.createUser = (req, res) => {
-  console.log(req.requestTime);
-  res.status(500).json({
-    status: 'error',
-    message: 'This route is not defined! Please use /signup',
-  });
-};
+// exports.createUser = (req, res) => {
+//   console.log(req.requestTime);
+//   res.status(500).json({
+//     status: 'error',
+//     message: 'This route is not defined! Please use /signup',
+//   });
+// };
