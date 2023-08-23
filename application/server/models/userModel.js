@@ -115,10 +115,12 @@ userSchema.methods.changedPasswordAfter = function(JWTTimestamp) {
   return false;
 };
 
+// this is for the reset toeken, auth will call here
 userSchema.methods.createPasswordResetToken = function() {
-  // it needs to be encryp tho
+  // it needs to be encryp tho and generate token here
   const resetToken = crypto.randomBytes(32).toString('hex');
 
+  // we have to save this to database and use it to compare
   this.passwordResetToken = crypto
     .createHash('sha256')
     .update(resetToken)
