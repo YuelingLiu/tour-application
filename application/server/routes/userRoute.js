@@ -3,6 +3,7 @@ const router = express.Router();
 const authController = require('./../controllers/authController');
 const userController = require('./../controllers/userController');
 const { promisify } = require('promisify');
+const { updateData } = require('./../js/updateSettings');
 
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
@@ -25,15 +26,22 @@ router.use(authController.protect);
 router.patch('/updateMyPassword', authController.updateMyPassword);
 
 // inactive me
-// router.delete('/deleteMe', userController.deleteMe);
+router.delete('/deleteMe', userController.deleteMe);
+
+// these routes are all about "ME" the logged in user, they can update settings
+// router.get('/me', userController.getMe, userController.getUser);
+// router.patch(
+//   '/updateMe',
+//   userController.uploadUserPhoto,
+//   userController.resizeUserPhoto,
+//   userController.updateMe
+// );
+
+router.patch('/updateMe', userController.updateMe);
 
 // these are only restrct to admin
-// router.use(authController.restrictTo('admin'));
-
-//
-// router
-//   .route('/')
-//   .get(userController.getAllUsers)
+router.use(authController.restrictTo('admin'));
+router.route('/').get(userController.getAllUsers);
 //   .post(userController.createUser);
 
 // router
