@@ -6,6 +6,7 @@ const { promisify } = require('util');
 const User = require('./../models/userModel');
 const sendEmail = require('./../utils/sendEmail');
 const cookie = require('cookie');
+
 const cookieParser = require('cookie-parser');
 
 // this function takes a user's id and generates a JWT using the jwt.sign function
@@ -54,15 +55,12 @@ exports.signup = catchAsync(async (req, res, next) => {
     role: req.body.role,
   });
 
-
-
-
   if (newUser) {
     console.log('User created successfully!', newUser);
   } else {
     console.log('Failed to create user.');
   }
-  
+
   // if above are all ok, we create token
   createSendToken(newUser, 201, res);
 });
@@ -111,6 +109,7 @@ exports.logout = (req, res) => {
 };
 
 exports.protect = catchAsync(async (req, res, next) => {
+  console.log('protectfuncton');
   // 1) Getting token and check of it's there
   let token;
   if (
@@ -153,6 +152,7 @@ exports.protect = catchAsync(async (req, res, next) => {
   // GRANT ACCESS TO PROTECTED ROUTE
   req.user = currentUser;
   res.locals.user = currentUser;
+
   next();
 });
 

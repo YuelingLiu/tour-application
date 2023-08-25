@@ -18,6 +18,13 @@ exports.getMe = (req, res, next) => {
   next();
 };
 
+// exports.updateUser = (req, res) => {
+//   res.status(500).json({
+//     status: 'error',
+//     message: 'This route is not yet defined!',
+//   });
+// };
+
 // we just inactive user not really delete them
 exports.deleteMe = catchAsync(async (req, res, next) => {
   await User.findByIdAndUpdate(req.user.id, { active: false });
