@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const tourRoute = require('./routes/tourRoute');
 const userRoute = require('./routes/userRoute');
 dotenv.config({ path: '.env' });
+const cookieParser = require('cookie-parser');
 
 const app = express();
 app.use((req, res, next) => {
