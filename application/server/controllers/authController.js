@@ -42,6 +42,9 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signup = catchAsync(async (req, res, next) => {
+  console.log('hello');
+  console.log('Request body:', req.body);
+
   const newUser = await User.create({
     name: req.body.name,
     email: req.body.email,
@@ -50,6 +53,16 @@ exports.signup = catchAsync(async (req, res, next) => {
     passwordChangedAt: req.body.passwordChangedAt,
     role: req.body.role,
   });
+
+
+
+
+  if (newUser) {
+    console.log('User created successfully!', newUser);
+  } else {
+    console.log('Failed to create user.');
+  }
+  
   // if above are all ok, we create token
   createSendToken(newUser, 201, res);
 });

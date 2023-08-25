@@ -11,6 +11,13 @@ router.get('/logout', authController.logout);
 router.post('/forgotPassword', authController.forgotPassword);
 router.patch('/resetPassword/:token', authController.resetPassword);
 
+// Duncans new routes 
+router.get('/getAllUser', userController.getAllUsers);
+router.get('/getUser/:id', userController.getUser);
+// router.patch('/:id', userController.updateUser);
+router.delete('/deleteUser/:id', userController.deleteUser);
+
+
 // Protect all routes after this middleware
 router.use(authController.protect);
 
@@ -34,5 +41,7 @@ router.patch('/updateMyPassword', authController.updateMyPassword);
 //   .get(userController.getUser)
 //   .patch(userController.updateUser)
 //   .delete(userController.deleteUser);
+// router.get('/getUser/:id', userController.getUser);
+
 
 module.exports = router;
