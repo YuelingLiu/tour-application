@@ -1,5 +1,7 @@
 const nodemailer = require('nodemailer');
 
+const dotenv = require('dotenv');
+
 // const sendEmail = (options) => {
 //   // 1 create a transport
 //   const transport = nodemailer.createTransport({
@@ -14,13 +16,10 @@ const nodemailer = require('nodemailer');
 //   // 2 define the emial options
 //   // 3send the email
 // };
-
+dotenv.config();
 const sgMail = require('@sendgrid/mail');
 const { resetPassword } = require('../controllers/authController');
-sgMail.setApiKey(
-  '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'
-); // Set your SendGrid API key here
-
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 const sendEmail = async (options) => {
   const msg = {
     to: options.user.email, // User's email address

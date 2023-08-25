@@ -5,4 +5,4 @@ npm-debug.log
 
 .env
 .DS_Store
-package-lock.json
+package-lock.jsonsendgrid.env
