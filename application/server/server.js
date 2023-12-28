@@ -39,7 +39,7 @@ mongoose
     console.error('DB connection failed:', err.message);
   });
 
-app.get('/', (req, res) => res.send('Hello World from overview /'));
+app.get('/', (req, res) => res.send(' Docker is easy /'));
 
 // Mount the tourRoute as a middleware under the '/api/v2/tours' path
 app.use('/api/v1/tours', tourRoute);
