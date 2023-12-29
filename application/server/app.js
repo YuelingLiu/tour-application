@@ -1,3 +1,6 @@
+const express = require('express');
+const app = express();
+
 const AppError = require('./utils/appError');
 
 app.use((req, res, next) => {
